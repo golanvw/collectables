@@ -12,7 +12,7 @@ namespace collectables.ViewModels
         private string itemId;
         private string text;
         private string description;
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Text
         {
@@ -44,9 +44,9 @@ namespace collectables.ViewModels
             try
             {
                 var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                Id = item.ItemId;
+                Text = item.ItemNaam;
+                Description = item.ItemTeKoop;
             }
             catch (Exception)
             {

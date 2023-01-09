@@ -1,11 +1,14 @@
-﻿using System;
+﻿using SQLite;
+using System;
 
 namespace collectables.Models
 {
     public class Item
     {
-        public string Id { get; set; }
-        public string Text { get; set; }
-        public string Description { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int ItemId { get; set; }
+        public string ItemNaam { get; set; }
+        public string ItemTeKoop { get; set; }
+        public int Prijs { get; set; }
     }
 }

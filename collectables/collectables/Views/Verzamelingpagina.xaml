@@ -2,10 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:collectables.ViewModels" xmlns:model="clr-namespace:collectables.Models"
              x:Class="collectables.Views.verzamelingpagina">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Uw verzameling"/>
-        </StackLayout>
-    </ContentPage.Content>
-    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddVerzamelingCommand}" />
+    </ContentPage.ToolbarItems>
+    <RefreshView x:DataType="local:VerzamelingViewModel" Command="{Binding LoadVerzamelingCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="VerzamelingListView"
+                    ItemsSource="{Binding Verzamelingen}"
+                    SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout x:DataType="model:Verzameling">
+                        <Label Text="Uw verzamelingen" FontSize="20"/>
+                        <Label Text="{Binding VerzamelingNaam}"></Label>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
 </ContentPage>

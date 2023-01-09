@@ -51,9 +51,9 @@ namespace collectables.ViewModels
         {
             Item newItem = new Item()
             {
-                Id = Guid.NewGuid().ToString(),
-                Text = Text,
-                Description = Description
+                
+                ItemNaam = Text,
+                ItemTeKoop = Description
             };
 
             await DataStore.AddItemAsync(newItem);
